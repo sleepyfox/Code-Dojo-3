@@ -1,35 +1,28 @@
-#debug = true
-fs = require 'fs'
-helper = require './helper.js'
+helper = require './helper'
 
-if debug? 
-  filename = 'test.dat'
-else 
-  filename = 'weather.dat'
+# initialise spread to a stupidly high value
+INITIAL_SPREAD = 
+  year: "1900"
+  spread: "1000"
 
-# read from file 'weather.dat'
-lines = helper.readFile filename
+WEATHER_REGEXP = /^\s+(\d{4})\s+(\d{1,2})\s+(\d{1,2}\.\d)\s+(\-?\d{1,2}\.\d).*$/
 
-# init spread to get lower than
-INITIAL = {year: "1900", spread: "100"}
+lines = helper.readFile 'weather.dat'
 
-# remove everything but identifier (yyyy-dd) and temp spread
+# use map to remove everything but identifier (yyyy-dd) and temperature spread
 mappedLines = lines.map (line) -> 
-  [dummy, year, month, max, min] = line.split /^\s+(\d{4})\s+(\d{1,2})\s+(\d{1,2}\.\d)\s+(\-?\d{1,2}\.\d).*$/
+  [dummy, year, month, max, min] = line.split WEATHER_REGEXP
   # if regexp matches
   if max?
-    {year: year + "-" + month, spread: helper.spread(max, min)}
+    year: year + "-" + month
+    spread: helper.spread max, min
   else
-    {year:undefined, spread:undefined}
+    year:undefined
+    spread:undefined
 
-console.log i for i in mappedLines if debug? 
+lowestSpread = (previous, current) -> 
+  if current.spread < previous.spread then current else previous
 
-min = mappedLines.reduce((p, c) -> 
-  if c.spread < p.spread
-    c
-  else
-    p
-,INITIAL)
+minimum = mappedLines.reduce lowestSpread, INITIAL_SPREAD
 
-# output results    
-console.log "smallest spread=#{min.spread} in year #{min.year}"
+console.log "smallest spread=#{minimum.spread} in year #{minimum.year}"

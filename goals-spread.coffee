@@ -1,26 +1,17 @@
-debug = true
+helper = require './helper'
 
-fs = require 'fs'
-helper = require './helper.js'
-
-# read from file football.dat
 lines = helper.readFile 'football.dat'
 
-# initialise smallest spread as large num e.g. 1000
+# initialise smallest spread as large number
 minSpread = 1000.0
+FOOTBALL_REGEXP = /^\s+\d+.\s([\w_]+)\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)\s+\-\s+(\d+)\s+\d+\s*$/
 
-# for each line in file/team
 for line in lines
-  # read team name, goals for, goals against
-  [dummy, team, goalsFor, goalsAgainst] = line.split /^\s+\d+.\s([\w_]+)\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)\s+\-\s+(\d+)\s+\d+\s*$/
-  # calculate spread
+  [dummy, team, goalsFor, goalsAgainst] = line.split FOOTBALL_REGEXP
   if team?
     spread = helper.spread goalsFor, goalsAgainst
 
-    # if spread smaller than smallest so far
     if spread < minSpread
-      # record new smallest team and spread
       [minSpread, minTeam] = [spread, team]
 
-# output results
 console.log "smallest spread=#{minSpread} by team #{minTeam}"
