@@ -17,8 +17,8 @@ mappedLines = lines.map (line) ->
     year: year + "-" + month
     spread: helper.spread max, min
   else
-    year:undefined
-    spread:undefined
+    year: undefined
+    spread: undefined
 
 lowestSpread = (previous, current) -> 
   if current.spread < previous.spread then current else previous
