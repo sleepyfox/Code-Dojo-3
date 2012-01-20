@@ -1,6 +1,6 @@
 vows = require 'vows'
 assert = require 'assert' 
-helper = require '../helper.js'
+helper = require '../helper'
 
 vows
   .describe('Given we want to find a minimum temperature spread')
