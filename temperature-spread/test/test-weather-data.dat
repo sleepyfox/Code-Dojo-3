@@ -1,0 +1,10 @@
+Heathrow (London Airport)
+Location 5078E 1767N 25m amsl
+Estimated data is marked with a * after the value.
+Missing data (more than 2 days missing in month) is marked by  ---.
+Sunshine data taken from an automatic Kipp & Zonen sensor marked with a #, otherwise sunshine data taken from a Campbell Stokes recorder.
+   yyyy  mm   tmax    tmin      af    rain     sun
+              degC    degC    days      mm   hours
+   1948   1    8.9     3.3    ---     85.0    ---
+   1948   2    7.9     2.2    ---     26.0    ---
+   1948   3   14.2     3.8    ---     14.0    ---
