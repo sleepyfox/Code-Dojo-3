@@ -16,7 +16,7 @@ class HistoricalWeatherRecord
   next: ->
     # read the next line in the file and return a Weather object
     if @lineCounter is @array.length - 1
-      return null # when we reach end of array
+      null # when we reach end of array
     else
       until year? # skip non-compliant lines
         [dummy, year, month, max, min] = @array[@lineCounter++].split WEATHER_REGEXP
