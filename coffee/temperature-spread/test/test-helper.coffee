@@ -7,7 +7,7 @@ vows
   .addBatch
     'when reading a file':
       topic: ->
-        helper.readFile 'test/text-file.txt'
+        helper.readFile 'temperature-spread/test/text-file.txt'
       'then we get a valid file': (topic) ->
         assert.equal topic.length, 3 # including last blank line
       'then we get the right first line': (topic) ->

@@ -6,17 +6,17 @@ wr = require '../Weather'
 Feature("Testing the historical record provider", module)
   .scenario("Test the provider creation")
   .given "a new Historical Record object", ->
-    @provider = new hr.HistoricalWeatherRecord '../resources/weather.dat'
+    @provider = new hr.HistoricalWeatherRecord 'resources/weather.dat'
     @callback()
   .then "the object should not be null", ->
     assert.isNotNull @provider
   .and "the line count should be zero", ->
     assert.equal @provider.lineCounter, 0
   .complete()
-  
+
   .scenario("Test that the provider returns a weather object")
   .given "a new Historical Record object", ->
-    @provider = new hr.HistoricalWeatherRecord '../resources/weather.dat'
+    @provider = new hr.HistoricalWeatherRecord 'resources/weather.dat'
     @callback()
   .then "when we call start we get 776 lines", ->
     lines = @provider.start()
@@ -36,7 +36,7 @@ Feature("Testing the historical record provider", module)
 
   .scenario("Test that the provider returns the correct next object")
   .given "the previous HistoricalWeatherRecord object", ->
-    @provider = new hr.HistoricalWeatherRecord '../resources/weather.dat'
+    @provider = new hr.HistoricalWeatherRecord 'resources/weather.dat'
     throwAway = @provider.start()
     throwAway = @provider.next()
     @callback()

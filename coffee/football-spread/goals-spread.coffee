@@ -1,6 +1,6 @@
 helper = require '../shared/helper'
 
-lines = helper.readFile '../resources/football.dat'
+lines = helper.readFile 'resources/football.dat'
 
 # initialise smallest spread as large number
 minSpread = 1000.0
