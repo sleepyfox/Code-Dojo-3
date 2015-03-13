@@ -77,11 +77,6 @@ class test_Temperature_Analyser(unittest.TestCase):
 		spreads = [2, 3, 1, 4, 8]
 		self.assertEqual(min(spreads), 1)
 
-	def test_date_extraction(self):
-		"Test that we can extract the year and month"
-		line = "   1948   5   18.1     6.9    ---     57.0    ---"
-		self.assertEqual(self.temps.extract_date(line), "1948-5")
-
 	def test_minimum_spread_from_all_data(self):
 		self.assertEqual(self.temps.minimum_spread(), 3.8)
 

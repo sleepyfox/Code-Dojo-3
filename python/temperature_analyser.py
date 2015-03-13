@@ -32,30 +32,11 @@ class Temperature_Analyser:
 		self.digits = re.compile(DIGITS_REGEXP)
 		DATA_LINE_REGEXP = "\s+[12]\d{3}\s" # start line with a year
 		valid = re.compile(DATA_LINE_REGEXP)
-		self.lines = [line.strip() for line in open(TEMPERATURE_FILE) if valid.match(line) ]
-		# self.readings =
+		self._lines = [line for line in open(TEMPERATURE_FILE) if valid.match(line) ]
+		self._readings = [Temperature_Reading(line) for line in self._lines]
 
 	def count_lines(self):
-		return len(self.lines)
-
-	def tMax(self, line):
-		TMAX_FIELD = 2
-		results = self.digits.findall(line)
-		return float(results[TMAX_FIELD])
-
-	def tMin(self, line):
-		TMIN_FIELD = 3
-		results = self.digits.findall(line)
-		return float(results[TMIN_FIELD])
-
-	def calculate_spread(self, first, second):
-		return abs(first - second)
-
-	def extract_date(self, line):
-		YEAR_FIELD = 0
-		MONTH_FIELD = 1
-		results = self.digits.findall(line)
-		return results[YEAR_FIELD].strip() + "-" + results[MONTH_FIELD].strip()
+		return len(self._readings)
 
 	def minimum_spread(self):
-		return min([self.calculate_spread(self.tMax(i), self.tMin(i)) for i in self.lines])
+		return min([i.calculate_spread() for i in self._readings])
