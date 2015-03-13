@@ -1,6 +1,7 @@
 import re
 
 # Global module constants
+LOWEST = 0
 YEAR_FIELD = 0
 MONTH_FIELD = 1
 TMAX_FIELD = 2
@@ -35,5 +36,5 @@ class Analyser:
 		return len(self._readings)
 
 	def minimum_spread(self):
-		s = sorted(self._readings, key = lambda x: x.calculate_spread())
-		return s[0]
+		sorted_readings = sorted(self._readings, key = lambda x: x.calculate_spread())
+		return sorted_readings[LOWEST]
