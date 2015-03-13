@@ -70,7 +70,12 @@ class test_Analyser(unittest.TestCase):
 		self.assertEqual(min(spreads), 1)
 
 	def test_minimum_spread_from_all_data(self):
-		self.assertEqual(self.analyser.minimum_spread(), 3.8)
+		"Correct minimum spread should be 3.8 degrees"
+		self.assertEqual(self.analyser.minimum_spread().calculate_spread(), 3.8)
+
+	def test_minimum_spread_date(self):
+		"minimum spread should occur in Dec 2002"
+		self.assertEqual(self.analyser.minimum_spread().date, '2002-12')
 
 if __name__ == "__main__":
 	unittest.main()

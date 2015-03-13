@@ -35,4 +35,5 @@ class Analyser:
 		return len(self._readings)
 
 	def minimum_spread(self):
-		return min([i.calculate_spread() for i in self._readings])
+		s = sorted(self._readings, key = lambda x: x.calculate_spread())
+		return s[0]
