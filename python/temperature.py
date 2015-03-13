@@ -8,7 +8,7 @@ TMIN_FIELD = 3
 DIGITS_REGEXP = "\-?[\d\.]+\s"
 DATA_LINE_REGEXP = "\s+[12]\d{3}\s" # start line with a year
 
-class Temperature_Reading:
+class Reading:
 	def __init__(self, line):
 		digits = re.compile(DIGITS_REGEXP)
 		valid = re.compile(DATA_LINE_REGEXP)
@@ -24,12 +24,12 @@ class Temperature_Reading:
 	def calculate_spread(self):
 		return abs(self.tMax - self.tMin)
 
-class Temperature_Analyser:
+class Analyser:
 	def __init__(self, file):
 		self.digits = re.compile(DIGITS_REGEXP)
 		valid = re.compile(DATA_LINE_REGEXP)
 		self._lines = [line for line in open(file) if valid.match(line) ]
-		self._readings = [Temperature_Reading(line) for line in self._lines]
+		self._readings = [Reading(line) for line in self._lines]
 
 	def count_lines(self):
 		return len(self._readings)
