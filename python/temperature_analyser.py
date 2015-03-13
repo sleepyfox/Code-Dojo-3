@@ -22,6 +22,8 @@ class Temperature_Reading:
 			else:
 				raise(ValueError)
 
+	def calculate_spread(self):
+		return abs(self.tMax - self.tMin)
 
 class Temperature_Analyser:
 	def __init__(self):

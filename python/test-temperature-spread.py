@@ -38,6 +38,31 @@ class test_Temperature_Reading(unittest.TestCase):
 		reading = ta.Temperature_Reading(line)
 		self.assertEqual(reading.tMin, -1.3)
 
+	def test_spread_zero(self):
+		"The spread between zero and zero is zero"
+		line = "   1991   2    0.0    0.0      16    34.7    48.5"
+		reading = ta.Temperature_Reading(line)
+		self.assertEqual(reading.calculate_spread(), 0)
+
+	def test_spread_positive(self):
+		"The spread between 4 and 1 is 3"
+		line = "   1991   2    4.0    1.0      16    34.7    48.5"
+		reading = ta.Temperature_Reading(line)
+		self.assertEqual(reading.calculate_spread(), 3)
+
+	def test_spread_abs_value(self):
+		"The spread between 3 and 5 is 2"
+		line = "   1991   2    3.0    5.0      16    34.7    48.5"
+		reading = ta.Temperature_Reading(line)
+		self.assertEqual(reading.calculate_spread(), 2)
+
+	def test_spread_with_negative_tMin(self):
+		"The spread between 2.5 and -1.5 should be 4"
+		line = "   1991   2    2.5   -1.5      16    34.7    48.5"
+		reading = ta.Temperature_Reading(line)
+		self.assertEqual(reading.calculate_spread(), 4)
+
+
 class test_Temperature_Analyser(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
@@ -46,22 +71,6 @@ class test_Temperature_Analyser(unittest.TestCase):
 	def test_have_lines_from_file(self):
 		"We have a non-zero line count"
 		self.assertTrue(self.temps.count_lines() > 0)
-
-	def test_spread_zero(self):
-		"The spread between zero and zero is zero"
-		self.assertEqual(self.temps.calculate_spread(0, 0), 0)
-
-	def test_spread_positive(self):
-		"The spread between 4 and 1 is 3"
-		self.assertEqual(self.temps.calculate_spread(4,1), 3)
-
-	def test_spread_abs_value(self):
-		"The spread between 3 and 5 is 2"
-		self.assertEqual(self.temps.calculate_spread(3,5), 2)
-
-	def test_spread_with_negative_tMin(self):
-		"The spread between 2 and -1 should be 3"
-		self.assertEqual(self.temps.calculate_spread(2, -1), 3)
 
 	def test_calc_minimum_spread_from_list(self):
 		"Test that getting a minimum from a sequence of spreads"
