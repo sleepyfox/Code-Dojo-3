@@ -1,8 +1,19 @@
 "A test suite for a temperature spread calculator"
 
 import unittest
-import re
 import temperature_analyser as ta
+
+class test_Temperature_Reading(unittest.TestCase):
+	def test_can_create_reading_from_line(self):
+		"creating a temperature reading from an empty string throws an exception"
+		with self.assertRaises(ValueError):
+			reading = ta.Temperature_Reading("")
+
+	# def test_read_date(self):
+	# 	"a temperature reading should have the correct date"
+	# 	line = "   1948   5   18.1     6.9    ---     57.0    ---"
+	# 	reading  =ta.Temperature_Reading(line)
+	# 	self.assertEqual(reading.date, "")
 
 class test_Temperature_Analyser(unittest.TestCase):
 	@classmethod

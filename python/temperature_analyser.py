@@ -1,5 +1,14 @@
 import re
 
+class Temperature_Reading:
+	def __init__(self, line):
+		if not line:
+			raise(ValueError)
+		else:
+			DATA_LINE_REGEXP = "\s+[12]\d{3}\s" # start line with a year
+			valid = re.compile(DATA_LINE_REGEXP)			
+			self.line = line
+
 class Temperature_Analyser:
 	def __init__(self):
 		TEMPERATURE_FILE = "heathrow-weather-data.txt"
