@@ -17,7 +17,6 @@ class Reading:
 		if not line or not valid.match(line):
 			raise(ValueError)
 		else:
-			self.line = line
 			self.date = fields[YEAR_FIELD].strip() + "-" + fields[MONTH_FIELD].strip()
 			self.tMin = float(fields[TMIN_FIELD])
 			self.tMax = float(fields[TMAX_FIELD])
@@ -27,9 +26,8 @@ class Reading:
 
 class Analyser:
 	def __init__(self, file):
-		self.digits = re.compile(DIGITS_REGEXP)
 		valid = re.compile(DATA_LINE_REGEXP)
-		self._lines = [line for line in open(file) if valid.match(line) ]
+		self._lines = [line for line in open(file) if valid.match(line)]
 		self._readings = [Reading(line) for line in self._lines]
 
 	def count_lines(self):
