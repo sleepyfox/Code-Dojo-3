@@ -6,11 +6,11 @@ import re
 class Temperature_Analyser:
 	def __init__(self):
 		TEMPERATURE_FILE = "heathrow-weather-data.txt"
-		DATA_LINE_REGEXP = "\s+\d{4}\s"
+		DATA_LINE_REGEXP = "\s+[12]\d{3}\s" # start line with a year
 		valid = re.compile(DATA_LINE_REGEXP)
 		self.lines = [line.strip() for line in open(TEMPERATURE_FILE) if valid.match(line) ]
 		# for i,v in enumerate(self.lines):
-		# 	if i < 30:
+		# 	# if i < 30:
 		# 		print v
 
 	def count_lines(self):
@@ -18,14 +18,14 @@ class Temperature_Analyser:
 
 	def tMax(self, line):
 		TMAX_FIELD = 2
-		DIGITS_REGEXP = "[\d\.]+\s"
+		DIGITS_REGEXP = "\-?[\d\.]+\s"
 		digits = re.compile(DIGITS_REGEXP)
 		results = digits.findall(line)
 		return float(results[TMAX_FIELD])
 
 	def tMin(self, line):
 		TMIN_FIELD = 3
-		DIGITS_REGEXP = "[\d\.]+\s"
+		DIGITS_REGEXP = "\-?[\d\.]+\s"
 		digits = re.compile(DIGITS_REGEXP)
 		results = digits.findall(line)
 		return float(results[TMIN_FIELD])
@@ -36,7 +36,7 @@ class Temperature_Analyser:
 	def extract_date(self, line):
 		YEAR_FIELD = 0
 		MONTH_FIELD = 1
-		DIGITS_REGEXP = "[\d\.]+\s"
+		DIGITS_REGEXP = "\-?[\d\.]+\s"
 		digits = re.compile(DIGITS_REGEXP)
 		results = digits.findall(line)
 		return results[YEAR_FIELD].strip() + "-" + results[MONTH_FIELD].strip()
@@ -75,6 +75,11 @@ class test_Temperature_Analyser(unittest.TestCase):
 		"Test that the low temp from string is 6.9"
 		line = "   1948   5   18.1     6.9    ---     57.0    ---"
 		self.assertEqual(self.temps.tMin(line), 6.9)
+
+	def test_extract_negative_low_temp_from_line(self):
+		"Test we can extract a negative tMin of -1.3"
+		line = "   1991   2    5.4    -1.3      16    34.7    48.5"
+		self.assertEqual(self.temps.tMin(line), -1.3)
 
 	def test_calc_minimum_spread_from_list(self):
 		"Test that getting a minimum from a sequence of spreads"
