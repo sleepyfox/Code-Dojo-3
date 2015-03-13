@@ -6,8 +6,11 @@ class Temperature_Reading:
 			raise(ValueError)
 		else:
 			DATA_LINE_REGEXP = "\s+[12]\d{3}\s" # start line with a year
-			valid = re.compile(DATA_LINE_REGEXP)			
-			self.line = line
+			valid = re.compile(DATA_LINE_REGEXP)
+			if valid.match(line):
+				self.line = line
+			else:
+				raise(ValueError)
 
 class Temperature_Analyser:
 	def __init__(self):

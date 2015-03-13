@@ -9,6 +9,11 @@ class test_Temperature_Reading(unittest.TestCase):
 		with self.assertRaises(ValueError):
 			reading = ta.Temperature_Reading("")
 
+	def test_throw_exception_on_header_line(self):
+		"Invalid data e.g. header line throws an exception"
+		with self.assertRaises(ValueError):
+			reading = ta.Temperature_Reading("Heathrow (London Airport)")
+			
 	# def test_read_date(self):
 	# 	"a temperature reading should have the correct date"
 	# 	line = "   1948   5   18.1     6.9    ---     57.0    ---"
