@@ -26,13 +26,12 @@ class Temperature_Reading:
 		return abs(self.tMax - self.tMin)
 
 class Temperature_Analyser:
-	def __init__(self):
-		TEMPERATURE_FILE = "heathrow-weather-data.txt"
+	def __init__(self, file):
 		DIGITS_REGEXP = "\-?[\d\.]+\s"
 		self.digits = re.compile(DIGITS_REGEXP)
 		DATA_LINE_REGEXP = "\s+[12]\d{3}\s" # start line with a year
 		valid = re.compile(DATA_LINE_REGEXP)
-		self._lines = [line for line in open(TEMPERATURE_FILE) if valid.match(line) ]
+		self._lines = [line for line in open(file) if valid.match(line) ]
 		self._readings = [Temperature_Reading(line) for line in self._lines]
 
 	def count_lines(self):

@@ -66,7 +66,8 @@ class test_Temperature_Reading(unittest.TestCase):
 class test_Temperature_Analyser(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
-		self.temps = ta.Temperature_Analyser()
+		TEMPERATURE_FILE = "heathrow-weather-data.txt"
+		self.temps = ta.Temperature_Analyser(TEMPERATURE_FILE)
 
 	def test_have_lines_from_file(self):
 		"We have a non-zero line count"
