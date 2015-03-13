@@ -9,9 +9,6 @@ class Temperature_Analyser:
 		DATA_LINE_REGEXP = "\s+[12]\d{3}\s" # start line with a year
 		valid = re.compile(DATA_LINE_REGEXP)
 		self.lines = [line.strip() for line in open(TEMPERATURE_FILE) if valid.match(line) ]
-		# for i,v in enumerate(self.lines):
-		# 	# if i < 30:
-		# 		print v
 
 	def count_lines(self):
 		return len(self.lines)
@@ -65,6 +62,10 @@ class test_Temperature_Analyser(unittest.TestCase):
 	def test_spread_abs_value(self):
 		"The spread between 3 and 5 is 2"
 		self.assertEqual(self.temps.calculate_spread(3,5), 2)
+
+	def test_spread_with_negative_tMin(self):
+		"The spread between 2 and -1 should be 3"
+		self.assertEqual(self.temps.calculate_spread(2, -1), 3)
 
 	def test_extract_high_temp_from_line(self):
 		"Test that high temp from string is 18.1"
