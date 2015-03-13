@@ -6,6 +6,8 @@ import re
 class Temperature_Analyser:
 	def __init__(self):
 		TEMPERATURE_FILE = "heathrow-weather-data.txt"
+		DIGITS_REGEXP = "\-?[\d\.]+\s"
+		self.digits = re.compile(DIGITS_REGEXP)
 		DATA_LINE_REGEXP = "\s+[12]\d{3}\s" # start line with a year
 		valid = re.compile(DATA_LINE_REGEXP)
 		self.lines = [line.strip() for line in open(TEMPERATURE_FILE) if valid.match(line) ]
@@ -15,16 +17,12 @@ class Temperature_Analyser:
 
 	def tMax(self, line):
 		TMAX_FIELD = 2
-		DIGITS_REGEXP = "\-?[\d\.]+\s"
-		digits = re.compile(DIGITS_REGEXP)
-		results = digits.findall(line)
+		results = self.digits.findall(line)
 		return float(results[TMAX_FIELD])
 
 	def tMin(self, line):
 		TMIN_FIELD = 3
-		DIGITS_REGEXP = "\-?[\d\.]+\s"
-		digits = re.compile(DIGITS_REGEXP)
-		results = digits.findall(line)
+		results = self.digits.findall(line)
 		return float(results[TMIN_FIELD])
 
 	def calculate_spread(self, first, second):
@@ -33,9 +31,7 @@ class Temperature_Analyser:
 	def extract_date(self, line):
 		YEAR_FIELD = 0
 		MONTH_FIELD = 1
-		DIGITS_REGEXP = "\-?[\d\.]+\s"
-		digits = re.compile(DIGITS_REGEXP)
-		results = digits.findall(line)
+		results = self.digits.findall(line)
 		return results[YEAR_FIELD].strip() + "-" + results[MONTH_FIELD].strip()
 
 	def minimum_spread(self):
