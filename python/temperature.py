@@ -12,11 +12,11 @@ class Reading:
 	def __init__(self, line):
 		digits = re.compile(DIGITS_REGEXP)
 		valid = re.compile(DATA_LINE_REGEXP)
+		fields = digits.findall(line)
 		if not line or not valid.match(line):
 			raise(ValueError)
 		else:
 			self.line = line
-			fields = digits.findall(line)
 			self.date = fields[YEAR_FIELD].strip() + "-" + fields[MONTH_FIELD].strip()
 			self.tMin = float(fields[TMIN_FIELD])
 			self.tMax = float(fields[TMAX_FIELD])
