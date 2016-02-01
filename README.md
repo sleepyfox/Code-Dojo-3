@@ -1,5 +1,13 @@
 # Code Kata Munge
-Different versions of this kata can be found in the following folders:
+This is a simple kata involving the reading of data from files and the finding of aggregate data from those files.
+
+In the first example we have data from a weather station at Heathrow airport. The challenge is simple:
+* Find the year and month that has the smallest spread between the maximum and minimum temperature recorded for that month
+
+Once this is complete, there is another, similar, problem to solve:
+* Given some football scores data (Premier League 2001/2), find the team that had the minimum spread between goals for and goals against
+
+Different versions of sample code solutions for this kata can be found in the following folders:
 * [Python](/python)
 * [CoffeeScript](/coffee)
 
