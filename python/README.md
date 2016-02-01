@@ -1,7 +1,7 @@
 # Code Kata Munge
 This is my worked example from the 1st meeting of the Edinburgh Code Dojo. Feel free to play around with them. You can run the code with:
 
-    python test-temperature-spread.py
+    python test-temperature.py
 
 for the weather kata or:
 
