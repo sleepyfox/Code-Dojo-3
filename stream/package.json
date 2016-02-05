@@ -1,0 +1,30 @@
+{
+  "name": "temp-spread",
+  "version": "1.0.0",
+  "description": "An implementation of the data-munging kata in CoffeeScript, using the Highland.js stream-processing library",
+  "author": "@sleepyfox",
+  "keywords": [
+    "Node.js",
+    "Streams",
+    "Kata"
+  ],
+  "scripts": {
+    "test": "mocha -R spec --compilers coffee:coffee-script/register test-*",
+    "watch": "mocha -wR nyan --compilers coffee:coffee-script/register test-*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/npm.git"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coffeelint": "^1.14.2",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "baconjs": "^0.7.83",
+    "coffee-script": "^1.10.0",
+    "mori": "^0.3.2"
+  }
+}

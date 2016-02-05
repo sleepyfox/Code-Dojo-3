@@ -2,4 +2,4 @@
 *.js
 */node_modules
 **/*.pyc
-
+npm-debug.log
