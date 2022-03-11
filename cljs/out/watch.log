@@ -1,0 +1,7 @@
+Building ...
+Compiling out/cljs/nodejs.cljs
+Compiling src/hello_world/core.cljs
+Copying jar:file:/home/fox/development/Code-Dojo/katas/Temp-Spread/cljs/cljs.jar!/cljs/nodejs.cljs to out/cljs/nodejs.cljs
+Copying jar:file:/home/fox/development/Code-Dojo/katas/Temp-Spread/cljs/cljs.jar!/cljs/nodejscli.cljs to out/cljs/nodejscli.cljs
+... done. Elapsed 0.086918429 seconds
+Watching paths: /home/fox/development/Code-Dojo/katas/Temp-Spread/cljs/src

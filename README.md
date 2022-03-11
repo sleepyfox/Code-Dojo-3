@@ -1,4 +1,5 @@
 # Code Kata Munge
+
 This is a simple kata involving the reading of data from files and the finding of aggregate data from those files.
 
 In the first example we have data from a weather station at Heathrow airport. The challenge is simple:
@@ -14,8 +15,10 @@ Once this is complete, there is another, similar, problem to solve:
 The data file can be found [here](heathrow-weather-data.txt).
 
 Different versions of sample code solutions for this kata can be found in the following folders:
+
 * [Python](/python)
 * [CoffeeScript](/coffee)
+* [ClojureScript](/cljs)
 
 The source of the kata is Dave Thomas of the Pragmatic Programmers and you can find the original write up from 2007 [here](http://codekata.com/kata/kata04-data-munging/). You can find out more about the Edinburgh and London Code Dojos at their home-pages  [Edinburgh](http://www.meetup.com/Edinburgh-Code-Dojo/) and [London](http://www.meetup.com/London-Code-Dojo/)
 
