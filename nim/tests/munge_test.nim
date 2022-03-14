@@ -29,3 +29,14 @@ suite "a temperature record object":
 suite "a temperature spread calculator":
   test "should record a spread of 5.6C":
     check(almostEqual(spread(temp).temp_spread, 5.6))
+
+import strutils
+
+proc process_file(path: string): seq[string] =
+  splitLines(readFile(path))[7..^1]
+
+suite "a file processor":
+  test "should remove the header":
+    let records = process_file("../heathrow-weather-data.txt")
+    check(records.len == 807)
+    check(records[0].strip()[0..3] == "1948")
