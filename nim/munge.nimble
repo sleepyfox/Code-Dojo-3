@@ -7,8 +7,6 @@ license       = "CC-BY-NC-SA-4.0"
 srcDir        = "src"
 bin           = @["munge"]
 
-
-
 # Dependencies
 
-requires "nim >= 1.6"
+requires "nim >= 1.6.4"
