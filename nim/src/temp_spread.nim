@@ -29,3 +29,5 @@ proc strings_to_temp*(ts: seq[string]): Temp =
 proc temp_reader*(line: string): seq[string] =
   splitWhitespace(line)
 
+proc process_file*(path: string): seq[string] =
+  splitLines(readFile(path))[7..^2] # remove header

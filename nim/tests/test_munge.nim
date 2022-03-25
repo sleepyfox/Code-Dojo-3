@@ -32,11 +32,12 @@ suite "a temperature spread calculator":
 
 import strutils
 
-proc process_file(path: string): seq[string] =
-  splitLines(readFile(path))[7..^1]
-
+# Integration tests
 suite "a file processor":
   test "should remove the header":
     let records = process_file("../heathrow-weather-data.txt")
-    check(records.len == 807)
     check(records[0].strip()[0..3] == "1948")
+
+  test "should not have a blank line at the end":
+    let records = process_file("../heathrow-weather-data.txt")
+    check(records.len == 806)
