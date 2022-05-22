@@ -14,6 +14,9 @@ type
     month*: int
     temp_spread*: float
 
+proc `<`*(a, b: TempSpread): bool =
+  a.temp_spread < b.temp_spread
+
 proc spread*(t: Temp): TempSpread =
   TempSpread(year: t.year,
              month: t.month,
