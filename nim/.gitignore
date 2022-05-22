@@ -1,2 +1,3 @@
-# Nim compile target
+# Nim compile targets
 tests/munge_test
+src/munge
