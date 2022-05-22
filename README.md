@@ -20,6 +20,7 @@ Different versions of sample code solutions for this kata can be found in the fo
 
 * [Python](/python)
 * [CoffeeScript](/coffee)
+* [Nim](/nim)
 
 The source of the kata is Dave Thomas of the Pragmatic Programmers and you can find the original write up from 2007 [here](http://codekata.com/kata/kata04-data-munging/). You can find out more about the Edinburgh and London Code Dojos at their home-pages  [Edinburgh](http://www.meetup.com/Edinburgh-Code-Dojo/) and [London](http://www.meetup.com/London-Code-Dojo/)
 
