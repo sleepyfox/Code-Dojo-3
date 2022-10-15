@@ -8,13 +8,13 @@ In the first example we have data from a weather station at Heathrow airport. Th
 
 * Find the year and month that has the smallest spread between the maximum and minimum temperature recorded for that month
 
-The data file can be found [here](football.dat).
+The weather station data file can be found [here](heathrow-weather-data.txt).
 
 Once this is complete, there is another, similar, problem to solve:
 
 * Given some football scores data (Premier League 2001/2), find the team that had the minimum spread between goals for and goals against
 
-The data file can be found [here](heathrow-weather-data.txt).
+The football data file can be found [here](football.dat).
 
 Different versions of sample code solutions for this kata can be found in the following folders:
 
